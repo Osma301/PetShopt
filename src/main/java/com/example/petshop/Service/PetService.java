@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PetService {
@@ -21,24 +22,21 @@ public class PetService {
         return (Pet) petRepo.findPetById(id).orElseThrow(()-> new UserNotFoundExeption("User by id"+id+"was not found"));
     }
 
-
-
     public List<Pet> findAllPet() {
         return petRepo.findAll();
     }
 
     public Pet addPet(Pet pet) {
+        pet.setPetCode(UUID.randomUUID().toString());
         return petRepo.save(pet);
-
     }
 
     public Pet updatePet(Pet pet) {
         return petRepo.save(pet);
     }
 
+
     public void deletePet(Long id) {
-
         petRepo.deleteById(id);
-
     }
 }

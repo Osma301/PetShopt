@@ -4,10 +4,8 @@ import Enum.EnumPet;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
-@Table(name = "PET_TB")
 public class Pet implements Serializable {
 
     @Id
@@ -25,6 +23,8 @@ public class Pet implements Serializable {
     private String hairTipe;
 
     private EnumPet enumPetTratamiento;
+
+    private String imageUrl;
 
     @Column(nullable = false,updatable = false)
     private String petCode;
@@ -107,6 +107,22 @@ public class Pet implements Serializable {
         this.petWeight = petWeight;
     }
 
+    public EnumPet getEnumPetTratamiento() {
+        return enumPetTratamiento;
+    }
+
+    public void setEnumPetTratamiento(EnumPet enumPetTratamiento) {
+        this.enumPetTratamiento = enumPetTratamiento;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
@@ -117,6 +133,7 @@ public class Pet implements Serializable {
                 ", petWeight='" + petWeight + '\'' +
                 ", hairTipe='" + hairTipe + '\'' +
                 ", enumPetTratamiento=" + enumPetTratamiento +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", petCode='" + petCode + '\'' +
                 '}';
     }

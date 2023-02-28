@@ -51,7 +51,7 @@ public class Resource {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Pet> deletePet(@PathVariable("id") Long id){
+    public ResponseEntity<?> deletePet(@PathVariable("id") Long id){
         petService.deletePet(id);
 
         return new ResponseEntity<>(HttpStatus.OK);
